@@ -24,7 +24,7 @@ int main()
     stdio_init_all();
 
     //Chamada da interrupção para o botão
-    gpio_set_irq_enabled_with_callback(BotaoA, GPIO_IRQ_EDGE_FALL, interrupcaoBotao, true);
+    gpio_set_irq_enabled_with_callback(BotaoA, GPIO_IRQ_EDGE_FALL, true, interrupcaoBotao);
 
     while (true) {
         
