@@ -4,7 +4,7 @@
 #include "hardware/adc.h"
 
 //Definindo pinos 
-//#define Led_Alerta 13 //Simula luz de sinalização para o modo ativado
+#define Led_Alerta 12 //Simula luz de sinalização para o modo ativado
 #define LedVentilador 11 //Simula o ventilador, indicando a mudança de potência 
 #define SensorY 27 //Simula o sensor de temperatura no eixo Y do joystick
 #define BotaoA 5 //Habilita ou desabilita modo de verificação de temperatura
@@ -20,8 +20,8 @@ uint potencia_atual = 0; //Inicia desligado
 
 //Definindo parâmetros de potência
 #define nivel0 0
-#define nivel1 500
-#define nivel2  1500
+#define nivel1 5000
+#define nivel2  15000
 #define nivel3  24900
 
 //Funções para configurar os pinos de leds e botões
@@ -45,12 +45,12 @@ void configurar_pwm(uint gpio){
     pwm_set_clkdiv(slice, DIVISOR_CLOCK);
     pwm_set_wrap(slice,WRAP);
     pwm_set_gpio_level(gpio, 0);
-    pwm_set_enabled(gpio, true);
+    pwm_set_enabled(slice, true);
 };
 
 //Função para mudar a potência suavemente
 void modifica_potencia(uint gpio, uint nova_potencia, uint potencia_atual){
-    bool incrementa = (nova_potencia>potencia_atual)?true:false;
+    bool incrementa = (nova_potencia>=potencia_atual)?true:false;
     while(potencia_atual!=nova_potencia){
         if(incrementa){
             potencia_atual += 100;
@@ -78,7 +78,7 @@ int main()
      adc_gpio_init(SensorY);
 
     configurar_leds(LedVentilador); //Já inicia desligado
-    //configurar_leds(LedAlerta);
+    configurar_leds(Led_Alerta);
     configurar_botao(BotaoA);
     configurar_pwm(LedVentilador);
 
@@ -109,6 +109,10 @@ int main()
             };
             modifica_potencia(LedVentilador, nivel_atual, nivel_anterior);
         };
+        printf("Potencia atua: %d\n",nivel_atual);
+        //pwm_set_gpio_level(LedVentilador,5000);
+        //gpio_put(Led_Alerta, !gpio_get(Led_Alerta));
+        sleep_ms(10);
     };
 };
 
