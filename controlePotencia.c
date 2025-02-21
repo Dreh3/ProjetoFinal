@@ -4,7 +4,7 @@
 #include "hardware/adc.h"
 
 //Definindo pinos 
-#define Led_Alerta 12 //Simula luz de sinalização para o modo ativado
+//#define Led_Alerta 12 //Simula luz de sinalização para o modo ativado
 #define LedVentilador 11 //Simula o ventilador, indicando a mudança de potência 
 #define SensorY 27 //Simula o sensor de temperatura no eixo Y do joystick
 #define BotaoA 5 //Habilita ou desabilita modo de verificação de temperatura
@@ -78,7 +78,7 @@ int main()
      adc_gpio_init(SensorY);
 
     configurar_leds(LedVentilador); //Já inicia desligado
-    configurar_leds(Led_Alerta);
+    //configurar_leds(Led_Alerta);
     configurar_botao(BotaoA);
     configurar_pwm(LedVentilador);
 
@@ -88,6 +88,8 @@ int main()
     while (true) {
 
         if(modohabilitado){
+            //gpio_put(Led_Alerta, 1);
+
             //Leitura do eixo Y para pegar dados analógicos que simulam o sensor de temperatura
             //Relação que converte o valor lido na entrada analalógica para temperatura na faixa de 20° a 35°
             adc_select_input(0);
@@ -109,9 +111,7 @@ int main()
             };
             modifica_potencia(LedVentilador, nivel_atual, nivel_anterior);
         };
-        printf("Potencia atua: %d\n",nivel_atual);
-        //pwm_set_gpio_level(LedVentilador,5000);
-        //gpio_put(Led_Alerta, !gpio_get(Led_Alerta));
+        printf("Temperatura atual: %d\n",temperatura); //Pequena verificação
         sleep_ms(10);
     };
 };
