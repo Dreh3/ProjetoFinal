@@ -1,7 +1,7 @@
 # Controle de Potência por Temperatura
 
 __Projeto Final da Capacitação em Sistemas Embarcados__<br>
-Repositório foi criado com o intuito de desenvolver um projeto prático sobre sistemas embaracados, aplicando os conhecimentos adquiridos ao longo do curso. O sistema desenvolvido foi feito para monitorar as temperaturas do ambiente e ajustar a potência entregue a um ventilador.
+Repositório foi criado com o intuito de desenvolver um projeto prático sobre sistemas embarcados, aplicando os conhecimentos adquiridos ao longo do curso. O sistema desenvolvido foi feito para monitorar as temperaturas do ambiente e ajustar a potência entregue a um ventilador.
 
 __Responsável pelo desenvolvimento:__
 Andressa Sousa Fonseca
@@ -20,7 +20,7 @@ __Os Componentes Utilizados:__
 ### 1. Funcionalidade do Sistema
 
 No presente código utilizado o joystick integrado à BitDogLab para simular oscilações de temperatura do ambiente, que modificam a potência do led, que simula um motor, de acordo
-com faixas pré definidas. Assim, o led pode desligar ou variar entre 3 níveis de potência distintos. Ademais, pode-se manter estável sem realizar novas leituras ao pressionar o Botão A, que habilita/desabilita o modo de leitura. As faixas e as potências correspondentes estão lsitadas abaixo: <br>
+com faixas pré definidas. Assim, o led pode desligar ou variar entre 3 níveis de potência distintos. Ademais, pode-se manter estável sem realizar novas leituras ao pressionar o Botão A, que habilita/desabilita o modo de leitura. As faixas e as potências correspondentes estão listadas abaixo: <br>
 1. Temperaturas menores que 20° desligam o ventilador(led).
 2. Temperaturas maiores que 20° e menores ou iguais a 25° entregam a potência mínima ao led.
 3. Temperaturas maiores que 25° e menores ou iguais a 30° entregam a potência média ao led.
@@ -29,7 +29,7 @@ com faixas pré definidas. Assim, o led pode desligar ou variar entre 3 níveis 
 ### 2. Código desenvolvido
 
 1. Configurando os componentes utilizados <br>
-O led Verde no pino GPIO 11 foi configurado como saída pwm com as seguintes definições:
+O led Verde no pino GPIO 11 foi configurado como saída pwm com as seguintes definições:<br>
 ```bash
 uint slice;
 gpio_set_function(gpio, GPIO_FUNC_PWM);
@@ -39,26 +39,26 @@ pwm_set_wrap(slice,WRAP);
 pwm_set_gpio_level(gpio, 0);
 pwm_set_enabled(slice, true);
 ```
-O botão A no pino GPIO 5 foi configurado como entrada com resistor pull up da seguinte forma:
+O botão A no pino GPIO 5 foi configurado como entrada com resistor pull up da seguinte forma: <br>
 ```bash
 gpio_init(gpio);
 gpio_set_dir(gpio, GPIO_IN);
 gpio_pull_up(gpio);
 ```
 
-Por último, para utilizar os dados do eixo Y do joystick no pino GPIO 27, as seguinte função foi necessária:
+Por último, para utilizar os dados do eixo Y do joystick no pino GPIO 27, a seguinte função foi necessária:
 ```bash
 adc_gpio_init(SensorY);
 ```
 
 2. Relacionando valores lido à temperatura <br>
-A leitura do eixo do joystick retorna valores de 0 a 4096. Assim, para relacionar esses valores à temperatura em graus Celsius de 20° a 35° foi necessário realizar um cálculo de função que resultou na seguinte operação usada no código:
+A leitura do eixo do joystick retorna valores de 0 a 4096. Assim, para relacionar esses valores à temperatura em graus Celsius de 20° a 35° foi necessário realizar um cálculo de função que resultou na seguinte relação usada no código: <br>
 ```bash
 temperatura = (15*adc_read() + 20 * 4096)/4096;
 ```
 
-3. Variando a potência
-Depois que a temperatura é lida e a faixa é identificada, como especificado acima, uma função é chamada para variar entre a potência atual a a nova potência corresponde à mudança de temperatura. A função chamada é :
+3. Variando a potência <br>
+Depois que a temperatura é lida e a faixa é identificada, como especificado acima, uma função é chamada para variar entre a potência atual a a nova potência corresponde à mudança de temperatura. A função chamada é : <br>
 ```bash
 modifica_potencia(LedVentilador, nivel_atual, nivel_anterior);
 ```
