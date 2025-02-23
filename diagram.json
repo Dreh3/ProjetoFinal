@@ -18,20 +18,6 @@
         "attrs": {}
       },
       {
-        "type": "wokwi-resistor",
-        "id": "r1",
-        "top": 128.75,
-        "left": -412.8,
-        "attrs": { "value": "100" }
-      },
-      {
-        "type": "wokwi-led",
-        "id": "led2",
-        "top": 111.6,
-        "left": -466.6,
-        "attrs": { "color": "red" }
-      },
-      {
         "type": "wokwi-led",
         "id": "led3",
         "top": 63.6,
@@ -43,7 +29,7 @@
         "id": "r3",
         "top": 109.55,
         "left": -412.8,
-        "attrs": { "value": "100" }
+        "attrs": { "value": "330" }
       },
       {
         "type": "wokwi-pushbutton",
@@ -61,14 +47,12 @@
       [ "pico:3V3", "joystick1:VCC", "green", [ "h0" ] ],
       [ "pico:GND.6", "joystick1:GND", "black", [ "h0" ] ],
       [ "pico:GP13", "r1:2", "green", [ "h0" ] ],
-      [ "r1:1", "led2:A", "green", [ "v19.2", "h-28.8" ] ],
       [ "pico:GP11", "r3:2", "green", [ "h0" ] ],
       [ "r3:1", "led3:A", "green", [ "v0" ] ],
       [ "pico:GP22", "joystick1:SEL", "green", [ "h0" ] ],
       [ "btn1:2.r", "pico:GP5", "green", [ "h9.8", "v9.8" ] ],
       [ "pico:GND.1", "btn1:1.r", "black", [ "h-9.6", "v19.2" ] ],
-      [ "led3:C", "pico:GND.4", "black", [ "h-28.4", "v67.2", "h86.4", "v-28.84" ] ],
-      [ "led2:C", "pico:GND.4", "black", [ "h-28.4", "v19.2", "h86.4", "v0", "v-48.04" ] ]
+      [ "led3:C", "pico:GND.4", "black", [ "h-28.4", "v67.2", "h86.4", "v-28.84" ] ]
     ],
     "dependencies": {}
   }
