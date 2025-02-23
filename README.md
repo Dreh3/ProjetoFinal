@@ -27,9 +27,9 @@ com faixas pré definidas. Assim, o led pode desligar ou variar entre 3 níveis 
 4. Temperaturas maiores que 30° entregam a potência máxima ao led.
 
 ### 2. Código desenvolvido
-
+<br>
 1. Configurando os componentes utilizados <br>
-O led Verde no pino GPIO 11 foi configurado como saída pwm com as seguintes definições:<br>
+<br>O led Verde no pino GPIO 11 foi configurado como saída pwm com as seguintes definições:<br>
 ```bash
 uint slice;
 gpio_set_function(gpio, GPIO_FUNC_PWM);
@@ -39,25 +39,25 @@ pwm_set_wrap(slice,WRAP);
 pwm_set_gpio_level(gpio, 0);
 pwm_set_enabled(slice, true);
 ```
-O botão A no pino GPIO 5 foi configurado como entrada com resistor pull up da seguinte forma: <br>
+<br>O botão A no pino GPIO 5 foi configurado como entrada com resistor pull up da seguinte forma: <br>
 ```bash
 gpio_init(gpio);
 gpio_set_dir(gpio, GPIO_IN);
 gpio_pull_up(gpio);
 ```
 
-Por último, para utilizar os dados do eixo Y do joystick no pino GPIO 27, a seguinte função foi necessária:
+<br>Por último, para utilizar os dados do eixo Y do joystick no pino GPIO 27, a seguinte função foi necessária:
 ```bash
 adc_gpio_init(SensorY);
 ```
-
-2. Relacionando valores lido à temperatura <br>
+<br>
+2. Relacionando valores lido à temperatura <br><br>
 A leitura do eixo do joystick retorna valores de 0 a 4096. Assim, para relacionar esses valores à temperatura em graus Celsius de 20° a 35° foi necessário realizar um cálculo de função que resultou na seguinte relação usada no código: <br>
 ```bash
 temperatura = (15*adc_read() + 20 * 4096)/4096;
 ```
-
-3. Variando a potência <br>
+<br>
+3. Variando a potência <br><br>
 Depois que a temperatura é lida e a faixa é identificada, como especificado acima, uma função é chamada para variar entre a potência atual a a nova potência corresponde à mudança de temperatura. A função chamada é : <br>
 ```bash
 modifica_potencia(LedVentilador, nivel_atual, nivel_anterior);
