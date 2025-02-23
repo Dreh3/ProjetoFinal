@@ -1,7 +1,7 @@
 //Código desenvolvido por Andressa Sousa Fonseca
 
 /*
-O presente código utilizado o joystick integrado à BitDogLab para simular oscilações de 
+No presente código foi utilizado o joystick integrado à BitDogLab para simular oscilações de 
 temperatura do ambiente, que modificam a potência do led, que simula um motor, de acordo
 com faixas prè definidas. Assim, o led pode desligar ou variar entre 3 níveis de potência distintos.
 Ademais, pode manter estável sem realizar novas leituras ao pressionar o Botão A, que habilita/desabilita 
