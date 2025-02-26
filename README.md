@@ -6,7 +6,7 @@ Repositório foi criado com o intuito de desenvolver um projeto prático sobre s
 __Responsável pelo desenvolvimento:__
 Andressa Sousa Fonseca
 
-__Uma breve explicação sobre o desenvolvimento e resultados obtidos podem ser vistos no vídeo endereçado no seguinte link: [Controle de PotÊncia por Temperatura](https://youtu.be/GN4ztbMzv6M?si=sReb9UBP103bOldQ).__
+__Uma breve explicação sobre o desenvolvimento e resultados obtidos podem ser vistos no vídeo endereçado no seguinte link: [Controle de Potência por Temperatura](https://youtu.be/S63_e2cmdzc?si=VAG-EfJSgHWxxnmf).__
 
 ## Detalhamento do Projeto
 
