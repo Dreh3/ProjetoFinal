@@ -53,7 +53,7 @@ gpio_pull_up(gpio);
 adc_gpio_init(SensorY);
 ```
 <br>
-2. Relacionando valores lido à temperatura <br><br>
+2. Relacionando valores lidos à temperatura <br><br>
 A leitura do eixo do joystick retorna valores de 0 a 4096. Assim, para relacionar esses valores à temperatura em graus Celsius de 20° a 35° foi necessário realizar um cálculo de função que resultou na seguinte relação usada no código: 
 
 ```bash
